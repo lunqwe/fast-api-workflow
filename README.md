@@ -1,4 +1,4 @@
-# FastAPI Project
+# Test task
 
 This project is a test task for Starnavi.
 [FastAPI](https://fastapi.tiangolo.com/) application.
