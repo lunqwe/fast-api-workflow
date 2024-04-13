@@ -86,10 +86,4 @@ class NodeService:
         else:
             raise HTTPException(status_code=400, detail=f'Node with id {node_id} is not exists.')
     
-    
-    def test(db: Session = Depends(get_db())):
-        workflow_id = 1
-        nodes = db.query(Node).filter(Node.workflow_id == workflow_id).all()
-        for node in nodes:
-            print(node.next_node_id)
         

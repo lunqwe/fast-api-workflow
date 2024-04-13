@@ -31,7 +31,3 @@ async def delete_workflow(workflow_id: int, db: Session = Depends(get_db)):
 @router.post('/run-sequence/{workflow_id}', tags=['workflows'])
 async def run_sequence(workflow_id: int, db: Session = Depends(get_db)):
     return WorkflowServices.create_and_run_graph(db=db, workflow_id=workflow_id)
-
-@router.get('/test')
-async def test(db: Session = Depends(get_db)):
-    return NodeService.test(db=db)
