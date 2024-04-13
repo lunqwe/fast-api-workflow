@@ -10,7 +10,7 @@ router = APIRouter()
 @router.post("/create-start-node/", tags=['nodes'])
 async def create_start_node(node_data: StartNodeSchema, db: Session = Depends(get_db)):
     created_node = NodeService.create_node(node_type='start', db=db, data=node_data)
-    if created_node:
+    if created_node: # if start node doesn`t exist before (for specific workflow)`
         return created_node
     else:
         return Response(content="Start node for this workflow is already exists.", status_code=200)
@@ -25,8 +25,8 @@ async def create_condition_node(node_data: ConditionNodeSchema, db: Session = De
 
 @router.post("/create-end-node/", tags=['nodes'])
 async def create_end_node(node_data: EndNodeSchema, db: Session = Depends(get_db)):
-    created_node = NodeService.create_node(node_type='end', db=db, data=node_data)
-    if created_node:
+    created_node = NodeService.create_node(node_type='end', db=db, data=node_data) 
+    if created_node: # if end node doesn`t exist before (for specific workflow)`
         return created_node
     else:
         return Response(content="End node for this workflow is already exists.", status_code=200)
@@ -57,11 +57,3 @@ async def read_node(node_id: int, db: Session = Depends(get_db)):
 @router.delete("/delete/{node_id}", tags=['nodes'])
 async def delete_node(node_id: int, db: Session = Depends(get_db)):
     return NodeService.delete_node(db=db, node_id=node_id)
-
-# @router.get('/test')
-# async def test(db: Session = Depends(get_db)):
-#     return Services.NodeService.test_models(workflow_id=1, db=db)
-
-# @router.post('/create-workflow', tags=['workflows'])
-# async def create_workflow(data: WorkflowDTO.WorkflowCreate = None, db: Session = Depends(get_db)):
-#     return Services.WorkflowService.create(data.name, db)

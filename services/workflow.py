@@ -7,6 +7,10 @@ from database import get_db
 
 
 class WorkflowServices:
+    """
+    Provides basic workflow management (get, create, update, delete). There is also a function for launching a sequence based on nodes tied to the Workflow object.
+    """
+
     def create_workflow(data: WorkflowCreateSchema, db: Session = Depends(get_db())) -> Workflow:
         workflow = Workflow(name=data.name)
 
