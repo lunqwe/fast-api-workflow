@@ -23,7 +23,8 @@ class Node(Base):
         'polymorphic_on': node_type
     }
 
-    
+""" Specific nodes classes """
+
 class StartNode(Node):
     __tablename__ = 'start_nodes'
 
