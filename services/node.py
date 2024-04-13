@@ -1,6 +1,5 @@
 from fastapi import HTTPException, Depends
-import networkx as nx
-from models.workflow import Workflow, StartNode, EndNode, MessageNode, ConditionNode, Node
+from models.workflow import StartNode, EndNode, MessageNode, ConditionNode, Node
 from schemas.workflow import *
 from sqlalchemy.orm import Session
 from database import get_db

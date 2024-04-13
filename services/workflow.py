@@ -4,7 +4,6 @@ from models.workflow import Workflow, StartNode, EndNode, MessageNode, Condition
 from schemas.workflow import *
 from sqlalchemy.orm import Session
 from database import get_db
-from fastapi.encoders import jsonable_encoder
 
 
 class WorkflowServices:
