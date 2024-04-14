@@ -87,7 +87,10 @@ class WorkflowServices:
                         raise HTTPException(status_code=400, detail="Error. Condition node could be reached through Message or Condition node")
 
                 elif isinstance(node, MessageNode):
-                    G.add_edge(node.id, node.next_node_id)
+                    if node.next_node.node_type != 'start':
+                        G.add_edge(node.id, node.next_node_id)
+                    else:
+                        raise HTTPException(status_code=400, detail="Error. Start node couldn`t have any previous nodes.")
 
                 elif isinstance(node, ConditionNode):
                     condition_value = node.evaluate_condition(db=db)
