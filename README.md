@@ -1,7 +1,6 @@
-# Test task
+# Workflow 
 
-This project is a test task for Starnavi.
-[FastAPI](https://fastapi.tiangolo.com/) application.
+In this project I implemented a workflow management system using graphs (networkX).
 
 ## Installation
 
